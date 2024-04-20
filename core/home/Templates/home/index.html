@@ -1,0 +1,46 @@
+{% extends "home/base.html" %}
+{% block start%}
+    <h1>this is code</h1>
+    {{students}}
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">S.no</th>
+            <th scope="col">name</th>
+           <th scope="col">Age</th>
+           <th scope="col">can vote?</th>
+            <!-- <th scope="col">Handle</th> -->
+          </tr>
+        </thead>
+        <tbody>
+        {% for students in students %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td style=>{{students.name}}</td>
+            <td>{{students.age}}</td>
+            <td >
+            {% if students.age >= 18 %}
+            💪 
+            {% else %}
+             🦾 
+            {% endif %}
+            </td>
+            
+       
+          </tr>
+        {%endfor%}  
+        </tbody>
+      </table>
+      <p>
+      {% if "jan" in months %}
+        yea
+      {% elif "sep" in months %}
+        yes its exist
+        {% else %}
+        neither
+
+
+      {% endif %}
+      </p>
+    
+{% endblock %}

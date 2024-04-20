@@ -1,0 +1,39 @@
+{% extends "home/base.html" %}
+
+{% block start %}
+
+<div class="container mt-5">
+    
+    
+
+    <form class="col-6 mx-auto card p-3 shadow-lg my-4"  method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2> Add the recipet </h2>
+        <div class="form-group " >
+            <label for="exampleInputEmail1" >Recipe</label>
+            <input type="text"  name="recipe_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter recipes" required>
+            
+        </div>
+        <div class="form-group">
+            <label for="text" >recipe desciptions</label>
+            <textarea class="form-control"  name="recipe_desc" required> </textarea>
+        </div>
+          <div class="form-group">
+            <label for="text">recipe images</label>
+            <input type="file"  name="recipe_img" class="form-control" required></input>
+        </div>
+        <button  type="submit" class="btn btn-success">Add recipe</button>
+        <a class="btn btn-warning" href="/show" role="button">show all</a>
+        
+        
+    </form>
+
+
+
+
+</div>
+
+
+
+
+{% endblock %}

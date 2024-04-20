@@ -1,0 +1,42 @@
+{% extends "home/base.html" %}
+{% block start %}
+
+
+<form class="container mx-auto border shadow-ig my-3" method="POST">
+  <h3>login</h3>
+  {% csrf_token %}
+     
+  {% if messages %}
+      
+      {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+          {{message}}
+        </div>
+      {% endfor %}
+
+  {% endif %}
+
+
+
+    <div class="form-group">
+      <label for="exampleInputtext1">User name </label>
+      <input type="text" class="form-control" name="username" id="exampleInputtext1" aria-describedby="textHelp" placeholder="Enter text">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input name="password" type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-info">Submit</button>
+    <p> dont have a account?
+    <a href="/signup/" >signup</a></p>
+  
+
+</form>
+
+  
+
+
+
+
+
+{% endblock %}

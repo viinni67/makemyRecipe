@@ -1,0 +1,53 @@
+{% extends "home/base.html" %}
+{{ queryset }}
+
+{% block start %}
+
+<div class='mx-auto col-6'>
+  
+  <form>
+    {% csrf_token %}
+  <div class='mb-3'>
+      <label for="exampleInputEmail1" >search</label>
+      <input  name="search" type="text"  name="recipe_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter recipes" required>
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">search</button>
+  </form>
+
+</div>
+
+<a class="btn btn-primary right mb-2" href="/" role="button"><- back</a>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Sno.</th>
+        <th scope="col">recipe name</th>
+        <th scope="col">recipe desciptions</th>
+        <th scope="col">recipe images</th>
+        <th scope="col">delete/update</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for recipe in queryset %}
+          <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td>{{ recipe.recipe_name }}</td>
+              <td>{{recipe.recipe_desc}}</td>
+              <td> <img  src="/media/{{recipe.recipe_img}}" style="height: 100px"> </img>  </td>
+              <td> 
+                  <a  type="submit" href="/delete/{{recipe.id}}/" class="btn btn-danger mb-2 ">Delete </a>
+                  <a  type="submit" href="/update/{{recipe.id}}/" class="btn btn-info mb-2 ">update </a>
+              </td>
+            
+          
+          </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+
+
+
+{% endblock %}
